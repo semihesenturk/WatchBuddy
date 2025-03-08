@@ -1,0 +1,6 @@
+@WatchBuddy.Services.Catalog.API_HostAddress = http://localhost:5268
+
+GET {{WatchBuddy.Services.Catalog.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
