@@ -2,7 +2,7 @@ using System.Text.Json.Serialization;
 
 namespace WatchBuddy.Shared.Dtos;
 
-public class ResponseDto<T>
+public class BaseServiceResponse<T>
 {
     public T Data { get; private set; }
     [JsonIgnore] public int StatusCode { get; private set; }
@@ -10,9 +10,9 @@ public class ResponseDto<T>
     public List<string> Errors { get; private set; }
 
     //static factory method
-    public static ResponseDto<T> Success(T data, int statusCode)
+    public static BaseServiceResponse<T> Success(T data, int statusCode)
     {
-        return new ResponseDto<T>
+        return new BaseServiceResponse<T>
         {
             Data = data,
             StatusCode = statusCode,
@@ -20,9 +20,9 @@ public class ResponseDto<T>
         };
     }
 
-    public static ResponseDto<T> Success(int statusCode)
+    public static BaseServiceResponse<T> Success(int statusCode)
     {
-        return new ResponseDto<T>
+        return new BaseServiceResponse<T>
         {
             Data = default(T),
             StatusCode = statusCode,
@@ -30,9 +30,9 @@ public class ResponseDto<T>
         };
     }
 
-    public static ResponseDto<T> Fail(List<string> errors, int statusCode)
+    public static BaseServiceResponse<T> Fail(List<string> errors, int statusCode)
     {
-        return new ResponseDto<T>
+        return new BaseServiceResponse<T>
         {
             Errors = errors,
             StatusCode = statusCode,
@@ -40,9 +40,9 @@ public class ResponseDto<T>
         };
     }
 
-    public static ResponseDto<T> Fail(string errors, int statusCode)
+    public static BaseServiceResponse<T> Fail(string errors, int statusCode)
     {
-        return new ResponseDto<T>
+        return new BaseServiceResponse<T>
         {
             Errors = [errors],
             StatusCode = statusCode
