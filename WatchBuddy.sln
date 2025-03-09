@@ -6,6 +6,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{34F0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchBuddy.Services.Catalog.API", "Services\Catalog\WatchBuddy.Services.Catalog.API\WatchBuddy.Services.Catalog.API.csproj", "{FB0C7785-8F07-4ABC-9DEE-1742B3D8E71A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{02D9ABD1-D305-41E6-82B6-63F49617B169}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchBuddy.Shared", "Shared\WatchBuddy.Shared\WatchBuddy.Shared.csproj", "{210AA8FB-D572-4461-95ED-47D80EAB017D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,11 +18,16 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{34F00C85-30EE-4ED6-BD00-9258EDD21C5E} = {C2F6C826-CD76-43C9-8DE4-8BBB964162CC}
 		{FB0C7785-8F07-4ABC-9DEE-1742B3D8E71A} = {34F00C85-30EE-4ED6-BD00-9258EDD21C5E}
+		{210AA8FB-D572-4461-95ED-47D80EAB017D} = {02D9ABD1-D305-41E6-82B6-63F49617B169}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FB0C7785-8F07-4ABC-9DEE-1742B3D8E71A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FB0C7785-8F07-4ABC-9DEE-1742B3D8E71A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB0C7785-8F07-4ABC-9DEE-1742B3D8E71A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB0C7785-8F07-4ABC-9DEE-1742B3D8E71A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{210AA8FB-D572-4461-95ED-47D80EAB017D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210AA8FB-D572-4461-95ED-47D80EAB017D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210AA8FB-D572-4461-95ED-47D80EAB017D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210AA8FB-D572-4461-95ED-47D80EAB017D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
