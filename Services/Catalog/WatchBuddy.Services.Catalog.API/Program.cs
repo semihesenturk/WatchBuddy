@@ -1,5 +1,7 @@
 using Microsoft.Extensions.Options;
 using WatchBuddy.Services.Catalog.API.Services;
+using WatchBuddy.Services.Catalog.API.Services.Category;
+using WatchBuddy.Services.Catalog.API.Services.Watch;
 using WatchBuddy.Services.Catalog.API.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +14,7 @@ builder.Services.AddSingleton<IDatabaseSettings>(sp => sp.GetRequiredService<IOp
 
 //Registers
 builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IWatchService, WatchService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

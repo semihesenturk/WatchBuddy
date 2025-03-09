@@ -1,22 +1,21 @@
 using AutoMapper;
 using MongoDB.Driver;
 using WatchBuddy.Services.Catalog.API.Dtos;
-using WatchBuddy.Services.Catalog.API.Models;
 using WatchBuddy.Services.Catalog.API.Settings;
 using WatchBuddy.Shared.Dtos;
 
-namespace WatchBuddy.Services.Catalog.API.Services;
+namespace WatchBuddy.Services.Catalog.API.Services.Category;
 
 public class CategoryService : ICategoryService
 {
-    private readonly IMongoCollection<Category> _categoryCollection;
+    private readonly IMongoCollection<Models.Category> _categoryCollection;
     private readonly IMapper _mapper;
 
     public CategoryService(IMapper mapper, IDatabaseSettings databaseSettings)
     {
         var client = new MongoClient(databaseSettings.ConnectionString);
         var database = client.GetDatabase(databaseSettings.DatabaseName);
-        _categoryCollection = database.GetCollection<Category>(databaseSettings.CategoryCollectionName);
+        _categoryCollection = database.GetCollection<Models.Category>(databaseSettings.CategoryCollectionName);
         _mapper = mapper;
     }
 
@@ -38,7 +37,7 @@ public class CategoryService : ICategoryService
 
     public async Task<BaseServiceResponse<CategoryDto>> CreateAsync(CategoryDto categoryDto)
     {
-        var category = _mapper.Map<Category>(categoryDto);
+        var category = _mapper.Map<Models.Category>(categoryDto);
         await _categoryCollection.InsertOneAsync(category);
 
         return BaseServiceResponse<CategoryDto>.Success(_mapper.Map<CategoryDto>(category), 200);

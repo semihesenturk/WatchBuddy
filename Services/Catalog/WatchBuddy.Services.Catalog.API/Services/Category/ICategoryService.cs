@@ -1,7 +1,7 @@
 using WatchBuddy.Services.Catalog.API.Dtos;
 using WatchBuddy.Shared.Dtos;
 
-namespace WatchBuddy.Services.Catalog.API.Services;
+namespace WatchBuddy.Services.Catalog.API.Services.Category;
 
 public interface ICategoryService
 {
