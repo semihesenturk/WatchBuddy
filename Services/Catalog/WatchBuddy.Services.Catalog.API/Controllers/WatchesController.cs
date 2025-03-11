@@ -23,6 +23,7 @@ public class WatchesController(IWatchService watchService) : CustomBaseControlle
         return CreateActionResultInstance(response);
     }
 
+    [HttpGet]
     [Route("/api/[controller]/GetAllByUserId/{userId}")]
     public async Task<IActionResult> GetAllByUserId(string userId)
     {

@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Options;
-using WatchBuddy.Services.Catalog.API.Services;
+using Scalar.AspNetCore;
 using WatchBuddy.Services.Catalog.API.Services.Category;
 using WatchBuddy.Services.Catalog.API.Services.Watch;
 using WatchBuddy.Services.Catalog.API.Settings;
@@ -22,16 +22,23 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
+app.MapControllers();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference(opt =>
+    {
+        opt
+            .WithTitle("WatchBuddy API")
+            .WithTheme(ScalarTheme.Kepler)
+            .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
+    });
 }
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
-app.MapControllers();
 
 app.Run();

@@ -44,7 +44,7 @@ public class WatchService : IWatchService
     {
         var watch = await _watchCollection.Find(watch => watch.Id == id).FirstOrDefaultAsync();
 
-        if (watch == null) return BaseServiceResponse<WatchDto>.Fail("Category not found", 404);
+        if (watch == null) return BaseServiceResponse<WatchDto>.Fail("Watch not found", 404);
 
         watch.Category = await _categoryCollection.Find(c => c.Id == watch.CategoryId).FirstAsync();
         return BaseServiceResponse<WatchDto>.Success(_mapper.Map<WatchDto>(watch), 200);
