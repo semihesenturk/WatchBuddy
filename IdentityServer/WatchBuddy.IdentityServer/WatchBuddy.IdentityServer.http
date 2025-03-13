@@ -1,0 +1,6 @@
+@WatchBuddy.IdentityServer_HostAddress = http://localhost:5064
+
+GET {{WatchBuddy.IdentityServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
