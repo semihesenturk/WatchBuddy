@@ -1,8 +1,18 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc.Authorization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+//Add token validation
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
+{
+    options.Authority = builder.Configuration["IdentityServerURL"];
+    options.Audience = "resource_photo_stock";
+    options.RequireHttpsMetadata = false;
+});
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(opt => { opt.Filters.Add(new AuthorizeFilter()); });
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -17,7 +27,7 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
