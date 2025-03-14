@@ -30,6 +30,20 @@ builder.Services.AddOpenApi();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var serviceProvider = scope.ServiceProvider;
+    var dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
+    await dbContext.Database.MigrateAsync();
+    
+    var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+
+    if (!userManager.Users.Any())
+    {
+        userManager.CreateAsync(new ApplicationUser{FullName = "semih esenturk", UserName = "esenturk", Email = "semihesenturk@outlook.com"},"Semih?123456").Wait();
+    }
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
