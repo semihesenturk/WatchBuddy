@@ -11,8 +11,11 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
       <Folder Include="wwwroot\Photos\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Shared\WatchBuddy.Shared\WatchBuddy.Shared.csproj" />
     </ItemGroup>
 
 </Project>
