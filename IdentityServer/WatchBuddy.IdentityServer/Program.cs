@@ -1,46 +1,30 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using WatchBuddy.IdentityServer.Configuration;
 using WatchBuddy.IdentityServer.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-// Veritabanı Bağlantısı
+// Add services to the container.
+// Veritabanı bağlantısını ekle
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 2. Identity yapılandırmasını ekleyin
+// ASP.NET Identity ile IdentityServer'ı entegre et
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders(); // Token sağlayıcıları eklemek (şifre sıfırlama vb. işlemler için)
+    .AddDefaultTokenProviders();
 
-
-// OpenIddict Konfigürasyonu
-builder.Services.AddOpenIddict()
-    .AddCore(options =>
-    {
-        options.UseEntityFrameworkCore()
-            .UseDbContext<ApplicationDbContext>();
-    })
-    .AddServer(options =>
-    {
-        options.SetAuthorizationEndpointUris("/connect/authorize")
-            .SetTokenEndpointUris("/connect/token")
-            .AllowPasswordFlow()
-            .AllowRefreshTokenFlow()
-            .SetAccessTokenLifetime(TimeSpan.FromMinutes(60))
-            .SetRefreshTokenLifetime(TimeSpan.FromDays(30));
-
-        options.AddDevelopmentEncryptionCertificate()
-            .AddDevelopmentSigningCertificate();
-    })
-    .AddValidation(options =>
-    {
-        options.UseLocalServer();
-        options.UseAspNetCore();
-    });
+builder.Services.AddIdentityServer()
+    .AddAspNetIdentity<ApplicationUser>()
+    .AddInMemoryClients(IdentityConfig.Clients)
+    .AddInMemoryIdentityResources(IdentityConfig.IdentityResources)
+    .AddInMemoryApiScopes(IdentityConfig.ApiScopes)
+    .AddDeveloperSigningCredential();
 
 builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -50,26 +34,17 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-// Veritabanı migrasyonu ve geliştirme ortamı
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    dbContext.Database.Migrate();
-    
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
-
-    if (!userManager.Users.Any())
-    {
-       userManager.CreateAsync(new ApplicationUser{UserName = "sesenturk", Email = "sesenturk@gmail.com"}, "Semih123!!").Wait();
-    }
-}
-
+// Middleware'leri ekle
+app.UseIdentityServer();
+app.UseAuthorization();
 
 app.MapControllers();
 

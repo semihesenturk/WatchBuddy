@@ -1,8 +1,8 @@
-namespace WatchBuddy.IdentityServer.Models;
-
 using Microsoft.AspNetCore.Identity;
+
+namespace WatchBuddy.IdentityServer.Models;
 
 public class ApplicationUser : IdentityUser
 {
-    // Gerekli özel alanları burada ekleyebilirsiniz.
+    public string FullName { get; set; }
 }
