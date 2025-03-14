@@ -1,4 +1,4 @@
-namespace WatchBuddy.IdentityServer.Models;
+namespace WatchBuddy.IdentityServer.API.Models;
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

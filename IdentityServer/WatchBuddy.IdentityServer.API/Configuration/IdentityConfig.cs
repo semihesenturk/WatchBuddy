@@ -1,6 +1,6 @@
 using Duende.IdentityServer.Models;
 
-namespace WatchBuddy.IdentityServer.Configuration;
+namespace WatchBuddy.IdentityServer.API.Configuration;
 
 public static class IdentityConfig
 {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace WatchBuddy.IdentityServer.Migrations
+namespace WatchBuddy.IdentityServer.API.Migrations
 {
     /// <inheritdoc />
     public partial class InitIdentity : Migration

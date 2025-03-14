@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WatchBuddy.IdentityServer.Configuration;
-using WatchBuddy.IdentityServer.Models;
+using WatchBuddy.IdentityServer.API;
+using WatchBuddy.IdentityServer.API.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,9 +17,10 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
 
 builder.Services.AddIdentityServer()
     .AddAspNetIdentity<ApplicationUser>()
-    .AddInMemoryClients(IdentityConfig.Clients)
-    .AddInMemoryIdentityResources(IdentityConfig.IdentityResources)
-    .AddInMemoryApiScopes(IdentityConfig.ApiScopes)
+    .AddInMemoryClients(Config.Clients)
+    .AddInMemoryIdentityResources(Config.IdentityResources)
+    .AddInMemoryApiScopes(Config.ApiScopes)
+    .AddInMemoryApiResources(Config.ApiResources)
     .AddDeveloperSigningCredential();
 
 builder.Services.AddControllers();
@@ -35,12 +36,15 @@ using (var scope = app.Services.CreateScope())
     var serviceProvider = scope.ServiceProvider;
     var dbContext = serviceProvider.GetRequiredService<ApplicationDbContext>();
     await dbContext.Database.MigrateAsync();
-    
+
     var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
     if (!userManager.Users.Any())
     {
-        userManager.CreateAsync(new ApplicationUser{FullName = "semih esenturk", UserName = "esenturk", Email = "semihesenturk@outlook.com"},"Semih?123456").Wait();
+        userManager.CreateAsync(
+            new ApplicationUser
+                { FullName = "semih esenturk", UserName = "esenturk", Email = "semihesenturk@outlook.com" },
+            "Semih?123456").Wait();
     }
 }
 

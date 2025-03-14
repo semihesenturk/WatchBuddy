@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace WatchBuddy.IdentityServer.Models;
+namespace WatchBuddy.IdentityServer.API.Models;
 
 public class ApplicationUser : IdentityUser
 {

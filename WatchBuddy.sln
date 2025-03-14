@@ -12,7 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchBuddy.Shared", "Shared
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityServer", "{9CC7F5D1-DD1F-4110-8F62-17B9FF16AE69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchBuddy.IdentityServer", "IdentityServer\WatchBuddy.IdentityServer\WatchBuddy.IdentityServer.csproj", "{D203BF56-1D94-408F-A98E-A008D0F67CB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchBuddy.IdentityServer.API", "IdentityServer\WatchBuddy.IdentityServer.API\WatchBuddy.IdentityServer.API.csproj", "{D203BF56-1D94-408F-A98E-A008D0F67CB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
