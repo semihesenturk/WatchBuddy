@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WatchBuddy.IdentityServer.API.Configuration;
 using WatchBuddy.IdentityServer.API.Models;
+using WatchBuddy.IdentityServer.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,7 +24,9 @@ builder.Services.AddIdentityServer()
     .AddInMemoryIdentityResources(Config.IdentityResources)
     .AddInMemoryApiScopes(Config.ApiScopes)
     .AddInMemoryApiResources(Config.ApiResources)
+    .AddResourceOwnerValidator<IdentityResourceOwnerPasswordValidator>()
     .AddDeveloperSigningCredential();
+
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
