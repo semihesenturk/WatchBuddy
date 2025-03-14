@@ -1,3 +1,5 @@
+using Duende.IdentityServer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WatchBuddy.IdentityServer.API.Dtos;
@@ -7,7 +9,8 @@ using WatchBuddy.Shared.Dtos;
 
 namespace WatchBuddy.IdentityServer.API.Controllers;
 
-[Route("api/[controller]")]
+[Authorize(IdentityServerConstants.LocalApi.PolicyName)]
+[Route("api/[controller]/[action]")]
 [ApiController]
 public class UserController(UserManager<ApplicationUser> userManager) : CustomBaseController
 {

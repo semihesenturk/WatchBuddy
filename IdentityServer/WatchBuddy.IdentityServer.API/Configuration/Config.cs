@@ -1,15 +1,15 @@
 using Duende.IdentityServer;
 using Duende.IdentityServer.Models;
 
-namespace WatchBuddy.IdentityServer.API;
+namespace WatchBuddy.IdentityServer.API.Configuration;
 
 public static class Config
 {
     public static IEnumerable<ApiResource> ApiResources =>
     [
         new("resource_catalog") { Scopes = { "catalog_fullpermission" } },
-            new("photo_stock_catalog") { Scopes = { "photo_stock_fullpermission" } },
-            new(IdentityServerConstants.LocalApi.ScopeName)
+        new("photo_stock_catalog") { Scopes = { "photo_stock_fullpermission" } },
+        new(IdentityServerConstants.LocalApi.ScopeName)
     ];
 
     public static IEnumerable<IdentityResource> IdentityResources =>
@@ -27,12 +27,13 @@ public static class Config
     public static IEnumerable<Client> Clients =>
     [
         new()
-            {
-                ClientName = "Watch Buddy Client",
-                ClientId = "WebMvcClient",
-                ClientSecrets = {new Secret("secret".Sha256())},
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
-                AllowedScopes = { "catalog_fullpermission", "photo_stock_fullpermission", IdentityServerConstants.LocalApi.ScopeName}
-            }
+        {
+            ClientName = "Watch Buddy Client",
+            ClientId = "WebMvcClient",
+            ClientSecrets = { new Secret("secret".Sha256()) },
+            AllowedGrantTypes = GrantTypes.ClientCredentials,
+            AllowedScopes =
+                { "catalog_fullpermission", "photo_stock_fullpermission", IdentityServerConstants.LocalApi.ScopeName }
+        }
     ];
 }

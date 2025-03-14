@@ -1,6 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WatchBuddy.Services.Catalog.API.Dtos;
-using WatchBuddy.Services.Catalog.API.Models;
 using WatchBuddy.Services.Catalog.API.Services.Category;
 using WatchBuddy.Shared.ControllerBases;
 

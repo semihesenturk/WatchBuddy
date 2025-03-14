@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using WatchBuddy.IdentityServer.API;
+using WatchBuddy.IdentityServer.API.Configuration;
 using WatchBuddy.IdentityServer.API.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddLocalApiAuthentication();
+
 // Veritabanı bağlantısını ekle
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -26,6 +28,7 @@ builder.Services.AddIdentityServer()
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -62,6 +65,7 @@ app.UseAuthorization();
 
 // Middleware'leri ekle
 app.UseIdentityServer();
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
