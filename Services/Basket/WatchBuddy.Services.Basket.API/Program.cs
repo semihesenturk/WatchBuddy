@@ -1,10 +1,21 @@
+using Microsoft.Extensions.Options;
+using WatchBuddy.Services.Basket.API.Services;
 using WatchBuddy.Services.Basket.API.Settings;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
 //Add redis settings
 builder.Services.Configure<RedisSettings>(builder.Configuration.GetSection("RedisSettings"));
+builder.Services.AddSingleton<RedisService>(sp =>
+{
+    var redisSettings = sp.GetRequiredService<IOptions<RedisSettings>>().Value;
+    var redis = new RedisService(redisSettings.Host, redisSettings.Port);
+    redis.Connect();
+    return redis;
+});
+
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
