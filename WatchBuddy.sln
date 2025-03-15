@@ -20,7 +20,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchBuddy.Services.PhotoSt
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{462C1ADE-9A0A-47B5-84F7-726B0F6E5EC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaatchBuddy.Services.Basket.API", "Services\Basket\WaatchBuddy.Services.Basket.API\WaatchBuddy.Services.Basket.API.csproj", "{59F6A8E0-386B-48C8-845F-2C96219A55E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchBuddy.Services.Basket.API", "Services\Basket\WatchBuddy.Services.Basket.API\WatchBuddy.Services.Basket.API.csproj", "{59F6A8E0-386B-48C8-845F-2C96219A55E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
