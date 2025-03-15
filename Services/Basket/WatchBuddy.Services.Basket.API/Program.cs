@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Options;
 using WatchBuddy.Services.Basket.API.Services;
 using WatchBuddy.Services.Basket.API.Settings;
+using WatchBuddy.Shared.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddSingleton<RedisService>(sp =>
     redis.Connect();
     return redis;
 });
+
+builder.Services.AddHttpContextAccessor();
+builder.Services.AddScoped<ISharedIdentityService, SharedIdentityService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
