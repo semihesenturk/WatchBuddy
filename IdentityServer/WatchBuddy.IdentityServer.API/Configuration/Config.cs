@@ -9,6 +9,7 @@ public static class Config
     [
         new("resource_catalog") { Scopes = { "catalog_fullpermission" } },
         new("resource_photo_stock") { Scopes = { "photo_stock_fullpermission" } },
+        new("resource_basket") { Scopes = { "basket_fullpermission" } },
         new(IdentityServerConstants.LocalApi.ScopeName)
     ];
 
@@ -24,7 +25,8 @@ public static class Config
     [
         new("catalog_fullpermission", "Catalog full permission"),
         new("photo_stock_fullpermission", "Photo Stock full permission"),
-        new(IdentityServerConstants.LocalApi.ScopeName, "Identity Server API full permission")
+        new(IdentityServerConstants.LocalApi.ScopeName, "Identity Server API full permission"),
+        new("basket_fullpermission", "Basket full permission"),
     ];
 
     public static IEnumerable<Client> Clients =>
@@ -47,6 +49,7 @@ public static class Config
             AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
             AllowedScopes =
             {
+                "basket_fullpermission",
                 IdentityServerConstants.StandardScopes.Email,
                 IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Profile,
