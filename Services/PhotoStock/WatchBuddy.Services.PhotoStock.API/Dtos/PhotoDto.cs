@@ -1,4 +1,4 @@
-namespace WatchBuddy.PhotoStock.API.Dtos;
+namespace WatchBuddy.Services.PhotoStock.API.Dtos;
 
 public class PhotoDto
 {

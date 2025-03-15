@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using WatchBuddy.PhotoStock.API.Dtos;
+using WatchBuddy.Services.PhotoStock.API.Dtos;
 using WatchBuddy.Shared.ControllerBases;
 using WatchBuddy.Shared.Dtos;
 using NoContent = Microsoft.AspNetCore.Http.HttpResults.NoContent;
 
-namespace WatchBuddy.PhotoStock.API.Controllers;
+namespace WatchBuddy.Services.PhotoStock.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]

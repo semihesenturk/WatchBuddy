@@ -16,7 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchBuddy.IdentityServer.A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PhotoStock", "PhotoStock", "{240B0154-7B75-4BA1-A323-6EF8FA468D75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchBuddy.PhotoStock.API", "Services\PhotoStock\WatchBuddy.PhotoStock.API\WatchBuddy.PhotoStock.API.csproj", "{2D6E1C17-EC32-4E5F-926B-29AF2500B522}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WatchBuddy.Services.PhotoStock.API", "Services\PhotoStock\WatchBuddy.Services.PhotoStock.API\WatchBuddy.Services.PhotoStock.API.csproj", "{2D6E1C17-EC32-4E5F-926B-29AF2500B522}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Basket", "Basket", "{462C1ADE-9A0A-47B5-84F7-726B0F6E5EC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaatchBuddy.Services.Basket.API", "Services\Basket\WaatchBuddy.Services.Basket.API\WaatchBuddy.Services.Basket.API.csproj", "{59F6A8E0-386B-48C8-845F-2C96219A55E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +34,8 @@ Global
 		{D203BF56-1D94-408F-A98E-A008D0F67CB6} = {9CC7F5D1-DD1F-4110-8F62-17B9FF16AE69}
 		{240B0154-7B75-4BA1-A323-6EF8FA468D75} = {C2F6C826-CD76-43C9-8DE4-8BBB964162CC}
 		{2D6E1C17-EC32-4E5F-926B-29AF2500B522} = {240B0154-7B75-4BA1-A323-6EF8FA468D75}
+		{462C1ADE-9A0A-47B5-84F7-726B0F6E5EC1} = {C2F6C826-CD76-43C9-8DE4-8BBB964162CC}
+		{59F6A8E0-386B-48C8-845F-2C96219A55E1} = {462C1ADE-9A0A-47B5-84F7-726B0F6E5EC1}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{FB0C7785-8F07-4ABC-9DEE-1742B3D8E71A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -48,5 +54,9 @@ Global
 		{2D6E1C17-EC32-4E5F-926B-29AF2500B522}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D6E1C17-EC32-4E5F-926B-29AF2500B522}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D6E1C17-EC32-4E5F-926B-29AF2500B522}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59F6A8E0-386B-48C8-845F-2C96219A55E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59F6A8E0-386B-48C8-845F-2C96219A55E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59F6A8E0-386B-48C8-845F-2C96219A55E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59F6A8E0-386B-48C8-845F-2C96219A55E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
