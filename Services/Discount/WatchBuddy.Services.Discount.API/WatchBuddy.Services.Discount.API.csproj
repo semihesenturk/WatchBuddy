@@ -7,11 +7,17 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Dapper.Contrib" Version="2.0.78" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.3"/>
+        <PackageReference Include="Npgsql" Version="9.0.3" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="Controllers\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\Shared\WatchBuddy.Shared\WatchBuddy.Shared.csproj" />
     </ItemGroup>
 
 </Project>
