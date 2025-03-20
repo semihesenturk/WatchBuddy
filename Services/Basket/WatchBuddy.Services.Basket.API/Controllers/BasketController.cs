@@ -23,6 +23,7 @@ public class BasketController(IBasketService basketService, ISharedIdentityServi
         return CreateActionResultInstance(response);
     }
 
+    [HttpDelete]
     public async Task<IActionResult> DeleteBasket()
     {
         return CreateActionResultInstance(await basketService.DeleteBasket(userService.GetUserId));
