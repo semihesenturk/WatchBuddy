@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\WatchBuddy.Services.Order.Domain.Core\WatchBuddy.Services.Order.Domain.Core.csproj" />
+    </ItemGroup>
+
 </Project>
